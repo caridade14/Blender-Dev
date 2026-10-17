@@ -1,0 +1,113 @@
+{
+  "rea_repository": "https://github.com/morluto/rea",
+  "clone_commit": "f85a932d71279415dd95cc30083137d1161f83b8",
+  "cli_package": "rea-agents",
+  "cli_version": "6.5.0",
+  "npm_dist_integrity": "sha512-C6BG7LyrAdR74mSjertM6PrxJkcNZ2bfQNOJornPo9erDEp2tyPRVYPnV5Yodr+1RqewCQla68WulXlVnveD+A==",
+  "node": "24.19.0",
+  "npm": "11.9.0",
+  "target_execution": false,
+  "client_configuration_modified": false,
+  "entries": [
+    {
+      "file": "linux-engine.evidence.json",
+      "evidence_id": "ev_9edd8750601bfd65a0ad2f76121c81fe2e13fa2608cb471f9ea888572e0b01d5",
+      "operation": "inspect_with_objdump",
+      "subject_sha256": "192ed1c0dc4395d521ea22d094d6c95c38a55e53fdf2e0d5be0c38153e41cef9",
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "file_sha256": "c7f21abe23130cbadc20cc8bf8bf421f61c05fab30813056d84ade7d37c4341c",
+      "limitations": [
+        "The executable version and supported formats are reported as unknown because no reliable version probe was performed.",
+        "A non-zero process exit is preserved as an observed command result.",
+        "When both are available, pre-run and post-run digests detect artifact changes across the provider call but cannot prove the exact bytes consumed during the call."
+      ],
+      "artifact_changed": false,
+      "exit_code": 0
+    },
+    {
+      "file": "macos-package.evidence.json",
+      "evidence_id": "ev_2d1d279a8775f9a706d396bbe8e3c2ed5487b3e4761bddb510bd071336aa1710",
+      "operation": "inspect_artifact",
+      "subject_sha256": "225abfff78c2d6fc2f067a84cb0f81ce2cd5a84590b95be19372814f62c208c8",
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "file_sha256": "f9e04bef0ef7640283a1b56ea45c25d6cd58ad8c3f9a5c848c2ecf0d3e73dc80",
+      "limitations": [
+        "Inspection derives bounded static hypotheses and next probes; it does not execute the artifact or claim format-specific semantics.",
+        "ZIP inventory lists central-directory entries only. Non-entry bytes, including an APK Signing Block before the central directory or a ZIP comment after it, are not occurrences."
+      ],
+      "manifest": {
+        "manifest_id": "agm_c0a0905f5d3d21f53289b65feecc5aa308ca4054d497988467191b1700c159f2",
+        "root_artifact_id": "art_466a412d2183ceabd9b1e2595c8b41439014c05b8ba6e2e8c427fcd2fda81dec",
+        "root_sha256": "225abfff78c2d6fc2f067a84cb0f81ce2cd5a84590b95be19372814f62c208c8",
+        "root_format": "zip",
+        "graph_sha256": "ac79e3ce6a1f1ff1ccef5ac1a45d4ecd9afee6a9d50b8d6bc766e9e9508fb5ae",
+        "node_count": 40,
+        "occurrence_count": 41,
+        "edge_count": 40
+      }
+    },
+    {
+      "file": "original-package.evidence.json",
+      "evidence_id": "ev_6b401e5e8bd5c110de7e2fa7fc7f7fb914ad3e29a8cc5154d059089e2c56de28",
+      "operation": "inspect_artifact",
+      "subject_sha256": "5a688207ddd4d57e43457597536ce760b597b2d97677508d2fa8d173abfeb0e7",
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "file_sha256": "ac7ad10981a7eae89a4f1a6ea275e65e4c43431945af661036391b110ec35e88",
+      "limitations": [
+        "Inspection derives bounded static hypotheses and next probes; it does not execute the artifact or claim format-specific semantics.",
+        "ZIP inventory lists central-directory entries only. Non-entry bytes, including an APK Signing Block before the central directory or a ZIP comment after it, are not occurrences."
+      ],
+      "manifest": {
+        "manifest_id": "agm_73106c314d6d5f5247cce6e5f8b812df9128560b465429185a5c3a3a0b4f44f2",
+        "root_artifact_id": "art_339eb9603dc8dce673713bd5e1c70e01461a7c152419f04dab919a66adaeb561",
+        "root_sha256": "5a688207ddd4d57e43457597536ce760b597b2d97677508d2fa8d173abfeb0e7",
+        "root_format": "zip",
+        "graph_sha256": "1e5af0429d52ae4d4baa2755fad3941590edef380c1fbb567c7ab57fd68f79b7",
+        "node_count": 6,
+        "occurrence_count": 6,
+        "edge_count": 5
+      }
+    },
+    {
+      "file": "windows-engine.evidence.json",
+      "evidence_id": "ev_25c8e148aa8e80e19d952d933ae9da1a75a0751c5e1d28647cfd71ccdb987c58",
+      "operation": "inspect_with_objdump",
+      "subject_sha256": "812dbb3d4e62ee4f56af3efe0b8dbf54d0a467667226ecaeb2b77e2ba6c302e8",
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "file_sha256": "dbf75f31c4ddfb884ed6813c6d6e583eaaa00149e369a9c4cafbc12b2a1d63d2",
+      "limitations": [
+        "The executable version and supported formats are reported as unknown because no reliable version probe was performed.",
+        "A non-zero process exit is preserved as an observed command result.",
+        "When both are available, pre-run and post-run digests detect artifact changes across the provider call but cannot prove the exact bytes consumed during the call."
+      ],
+      "artifact_changed": false,
+      "exit_code": 0
+    }
+  ],
+  "failures": [
+    {
+      "file": "macos-engine.failure.json",
+      "operation": "inspect_macho",
+      "exit_code": 1,
+      "code": "capability_unavailable",
+      "reason": "Native macOS utilities require macOS."
+    },
+    {
+      "file": "doctor.json",
+      "operation": "doctor --client codex",
+      "exit_code": 1,
+      "reason": "MCP registration and optional native analysis engines unavailable; CLI static inspection succeeded."
+    }
+  ],
+  "recreated_package": {
+    "file": "recreated-package.evidence.json",
+    "evidence_id": "ev_1df69edb585b41fc446bb568f810515f48610b218550682dc2a5516d1d7f430c",
+    "sha256": "08d148c6a539884ffe71b38e7b2b2424fb00f6c433e4e749f21839afdeabfa8d",
+    "operation": "inspect_artifact",
+    "exit_code": 0
+  }
+}

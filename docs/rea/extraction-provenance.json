@@ -1,0 +1,22 @@
+[
+  {
+    "outer_sha256": "5a688207ddd4d57e43457597536ce760b597b2d97677508d2fa8d173abfeb0e7",
+    "archive_member": "auto_unwrap_v2_mac.zip",
+    "archive_sha256": "225abfff78c2d6fc2f067a84cb0f81ce2cd5a84590b95be19372814f62c208c8",
+    "binary_member": "auto_unwrap/engine/macos/optcuts",
+    "materialized_path": "/workspace/tools/rea-inputs/macos-optcuts",
+    "binary_sha256": "4ed77a2c40dbcf4171aeeb38d195e8e6197a609f114fc39c8e4d9977597091a6",
+    "size": 4000832,
+    "executed": false
+  },
+  {
+    "outer_sha256": "5a688207ddd4d57e43457597536ce760b597b2d97677508d2fa8d173abfeb0e7",
+    "archive_member": "auto_unwrap_v2_win.zip",
+    "archive_sha256": "8d2006b876d5cec0ef57c7460a7734ffb1ea255d2421590aa7020ff052e4bda4",
+    "binary_member": "auto_unwrap/engine/windows/optcuts.exe",
+    "materialized_path": "/workspace/tools/rea-inputs/windows-optcuts.exe",
+    "binary_sha256": "812dbb3d4e62ee4f56af3efe0b8dbf54d0a467667226ecaeb2b77e2ba6c302e8",
+    "size": 5424115,
+    "executed": false
+  }
+]

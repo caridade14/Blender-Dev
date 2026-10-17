@@ -1,0 +1,13 @@
+schema_version = "1.0.0"
+id = "nexo_uv"
+version = "0.1.0"
+name = "Nexo UV"
+tagline = "Unwrap, refine and pack UVs with portable Blender tools"
+maintainer = "Nexo UV contributors"
+type = "add-on"
+tags = ["UV"]
+blender_version_min = "4.2.0"
+license = ["SPDX:GPL-3.0-or-later"]
+
+[build]
+paths_exclude_pattern = ["__pycache__/", "*.pyc", ".DS_Store"]

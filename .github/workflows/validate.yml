@@ -1,0 +1,93 @@
+name: Validate Nexo UV
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - name: Validate and create both installation formats
+        run: python tools/build.py
+      - name: Verify byte-for-byte reproducibility
+        run: |
+          python tools/build.py --output-dir /tmp/nexo-uv-repeat
+          cmp dist/SHA256SUMS /tmp/nexo-uv-repeat/SHA256SUMS
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: nexo-uv-packages
+          path: dist/
+          if-no-files-found: error
+
+  blender:
+    name: Blender ${{ matrix.version }} / ${{ matrix.platform.name }}
+    strategy:
+      fail-fast: false
+      matrix:
+        version: ['4.2.0', '4.3.2']
+        platform:
+          - name: Linux x64
+            runner: ubuntu-24.04
+            system: linux
+            arch: x64
+          - name: Windows x64
+            runner: windows-2022
+            system: windows
+            arch: x64
+          - name: macOS Intel
+            runner: macos-15-intel
+            system: macos
+            arch: x64
+          - name: macOS Apple Silicon
+            runner: macos-15
+            system: macos
+            arch: arm64
+    runs-on: ${{ matrix.platform.runner }}
+    timeout-minutes: 35
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - name: Validate package contents and metadata
+        run: python tools/build.py
+      - name: Download official Blender and verify its checksum
+        id: blender
+        run: >-
+          python tools/fetch_blender.py --version '${{ matrix.version }}'
+          --system '${{ matrix.platform.system }}' --arch '${{ matrix.platform.arch }}'
+          --destination '${{ runner.temp }}/nexo-blender' --github-output
+      - name: Run integration smoke tests in Blender
+        env:
+          BLENDER_EXECUTABLE: ${{ steps.blender.outputs.executable }}
+        run: >-
+          "$BLENDER_EXECUTABLE" --background --factory-startup
+          --python-exit-code 1 --python tests/blender_smoke.py
+      - name: Run real CPU Cycles bake checks
+        env:
+          BLENDER_EXECUTABLE: ${{ steps.blender.outputs.executable }}
+        run: >-
+          "$BLENDER_EXECUTABLE" --background --threads 2
+          --python-exit-code 1 --python tests/blender_bake_smoke.py
+      - name: Verify legacy package installation outside the checkout
+        working-directory: ${{ runner.temp }}
+        env:
+          BLENDER_EXECUTABLE: ${{ steps.blender.outputs.executable }}
+          BLENDER_USER_SCRIPTS: ${{ runner.temp }}/nexo-install/scripts
+          BLENDER_USER_CONFIG: ${{ runner.temp }}/nexo-install/config
+          BLENDER_USER_EXTENSIONS: ${{ runner.temp }}/nexo-install/extensions
+        run: >-
+          "$BLENDER_EXECUTABLE" --background --factory-startup
+          --python-exit-code 1 --python '${{ github.workspace }}/tests/blender_install_smoke.py'

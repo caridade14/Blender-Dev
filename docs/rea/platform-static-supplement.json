@@ -1,0 +1,66 @@
+{
+  "producer": "Python stdlib static header/string probe (supplemental; not REA Evidence)",
+  "executed_targets": false,
+  "macos": {
+    "sha256": "4ed77a2c40dbcf4171aeeb38d195e8e6197a609f114fc39c8e4d9977597091a6",
+    "format": "Mach-O FAT",
+    "architectures": [
+      {
+        "cpu_type": "0x1000007",
+        "architecture": "x86_64",
+        "slice_offset": 16384,
+        "slice_size": 2180560,
+        "minimum_macos": "10.15.0",
+        "sdk": "14.5.0",
+        "load_dylibs": [
+          "/usr/lib/libc++.1.dylib",
+          "/usr/lib/libSystem.B.dylib"
+        ]
+      },
+      {
+        "cpu_type": "0x100000c",
+        "architecture": "arm64",
+        "slice_offset": 2211840,
+        "slice_size": 1788992,
+        "minimum_macos": "11.0.0",
+        "sdk": "14.5.0",
+        "load_dylibs": [
+          "/usr/lib/libc++.1.dylib",
+          "/usr/lib/libSystem.B.dylib"
+        ]
+      }
+    ]
+  },
+  "linux": {
+    "sha256": "192ed1c0dc4395d521ea22d094d6c95c38a55e53fdf2e0d5be0c38153e41cef9",
+    "elf_e_machine": 62,
+    "version_strings": [
+      "GLIBCXX_3.4",
+      "GLIBCXX_3.4.11",
+      "GLIBCXX_3.4.14",
+      "GLIBCXX_3.4.15",
+      "GLIBCXX_3.4.17",
+      "GLIBCXX_3.4.18",
+      "GLIBCXX_3.4.19",
+      "GLIBCXX_3.4.20",
+      "GLIBCXX_3.4.21",
+      "GLIBCXX_3.4.22",
+      "GLIBCXX_3.4.26",
+      "GLIBCXX_3.4.29",
+      "GLIBCXX_3.4.30",
+      "GLIBCXX_3.4.32",
+      "GLIBCXX_3.4.5",
+      "GLIBCXX_3.4.9",
+      "GLIBC_2.14",
+      "GLIBC_2.2.5",
+      "GLIBC_2.29",
+      "GLIBC_2.3.4",
+      "GLIBC_2.32",
+      "GLIBC_2.34",
+      "GLIBC_2.35",
+      "GLIBC_2.38",
+      "GLIBC_2.4"
+    ],
+    "limitation": "Embedded symbol-version strings indicate compatibility risk, not an execution test or a complete dynamic dependency inventory."
+  }
+}
